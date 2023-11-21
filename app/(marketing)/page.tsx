@@ -1,4 +1,6 @@
+import { Button } from '@/components/ui/button';
 import { Medal } from 'lucide-react';
+import Link from 'next/link';
 
 const MarketingPage = () => {
   return (
@@ -25,6 +27,9 @@ const MarketingPage = () => {
         high rises to home office, the way your team works is unique -
         accomplish it all with TrelloClone.
       </div>
+      <Button size="lg" className="mt-6" asChild>
+        <Link href="/sign-up">Get TrelloClone for free</Link>
+      </Button>
     </div>
   );
 };
