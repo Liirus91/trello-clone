@@ -1,11 +1,20 @@
 import { Button } from '@/components/ui/button';
 import { Medal } from 'lucide-react';
 import Link from 'next/link';
+import localFont from 'next/font/local';
+import { cn } from '@/lib/utils';
+
+const headingFont = localFont({ src: '../../public/fonts/font.woff2' });
 
 const MarketingPage = () => {
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="flex flex-col justify-center items-center">
+      <div
+        className={cn(
+          'flex flex-col justify-center items-center',
+          headingFont.className
+        )}
+      >
         <div
           className="flex items-center mb-4 border shadow-sm p-4 uppercase
         bg-amber-100 text-amber-700 rounded-full"
