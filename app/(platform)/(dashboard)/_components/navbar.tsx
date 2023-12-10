@@ -11,12 +11,17 @@ export const Navbar = () => {
           <Logo />
         </div>
         <Button
+          variant="primary"
           size="sm"
           className="hidden rounded-sm md:block h-auto py-1.5 px-2"
         >
           Create
         </Button>
-        <Button size="sm" className="block rounded-sm md:hidden">
+        <Button
+          variant="primary"
+          size="sm"
+          className="block rounded-sm md:hidden"
+        >
           <Plus className="h-4 w-4" />
         </Button>
       </div>
