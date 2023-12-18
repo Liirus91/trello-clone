@@ -74,7 +74,7 @@ const Sidebar = ({ storageKey = 't-sidebar-state' }: SidebarProps) => {
             key={organization.id}
             isActive={activeOrganization?.id === organization.id}
             organization={organization as Organization}
-            isExpand={expanded[organization.id]}
+            isExpanded={expanded[organization.id]}
             onExpand={onExpend}
           />
         ))}
