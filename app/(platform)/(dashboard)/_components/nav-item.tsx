@@ -1,6 +1,11 @@
 'use client';
 
-import { AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import {
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Activity, CreditCard, Layout, Settings } from 'lucide-react';
 import Image from 'next/image';
@@ -77,6 +82,23 @@ export const NavItem = ({
           <span className="font-medium text-small">{organization.name}</span>
         </div>
       </AccordionTrigger>
+      <AccordionContent className="pt-1 text-neutral-700">
+        {routes.map((route) => (
+          <Button
+            key={route.href}
+            size="sm"
+            onClick={() => onClick(route.href)}
+            className={cn(
+              'justify-start w-full font-normal pl-10 mb-1',
+              pathname === route.href && 'bg-sky-500/10 text-sky-700'
+            )}
+            variant="ghost"
+          >
+            {route.icon}
+            {route.label}
+          </Button>
+        ))}
+      </AccordionContent>
     </AccordionItem>
   );
 };
