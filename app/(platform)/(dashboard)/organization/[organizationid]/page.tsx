@@ -1,4 +1,5 @@
 import { create } from '@/actions/create-board';
+import { Button } from '@/components/ui/button';
 
 const OrganizationIdPage = () => {
   return (
@@ -11,6 +12,7 @@ const OrganizationIdPage = () => {
           required
           className="border p-1 border-black"
         />
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   );
