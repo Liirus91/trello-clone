@@ -11,5 +11,6 @@ export async function create(formData: FormData) {
 
   await db.board.create({ data: { title } });
 
-  revalidatePath('');
+  //TODO change it!
+  revalidatePath('/organization/org_2Z71JZByVFwx3YvqfRLmoDjHHZV');
 }
