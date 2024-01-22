@@ -21,7 +21,7 @@ export const Form = () => {
   return (
     <form action={onSubmit}>
       <div className="flex flex-col space-y-2">
-        <FormInput id="title" errors={fieldErrors} />
+        <FormInput label="Board title" id="title" errors={fieldErrors} />
       </div>
       <FormButton />
     </form>
