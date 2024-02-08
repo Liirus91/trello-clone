@@ -1,5 +1,6 @@
 'use client';
 
+import { defaultImages } from '@/constants/images';
 import { unsplash } from '@/lib/unsplash';
 import { cn } from '@/lib/utils';
 import { Loader2 } from 'lucide-react';
@@ -15,7 +16,8 @@ interface FormPickerProps {
 export const FormPicker = ({ id, errors }: FormPickerProps) => {
   const { pending } = useFormStatus();
 
-  const [images, setImages] = useState<Array<Record<string, any>>>([]);
+  const [images, setImages] =
+    useState<Array<Record<string, any>>>(defaultImages);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedImageId, setSelectedImageId] = useState(null);
 
@@ -35,7 +37,7 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
         }
       } catch (error) {
         console.log(error);
-        setImages([]);
+        setImages(defaultImages);
       } finally {
         setIsLoading(false);
       }
