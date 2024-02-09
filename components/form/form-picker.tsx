@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useFormStatus } from 'react-dom';
+import { FormErrors } from './form-errors';
 
 interface FormPickerProps {
   id: string;
@@ -94,6 +95,7 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
           </div>
         ))}
       </div>
+      <FormErrors id="image" errors={errors} />
     </div>
   );
 };
