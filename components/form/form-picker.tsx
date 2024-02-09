@@ -3,8 +3,9 @@
 import { defaultImages } from '@/constants/images';
 import { unsplash } from '@/lib/unsplash';
 import { cn } from '@/lib/utils';
-import { Loader2 } from 'lucide-react';
+import { Check, Loader2 } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { useFormStatus } from 'react-dom';
 
@@ -78,6 +79,18 @@ export const FormPicker = ({ id, errors }: FormPickerProps) => {
               src={image.urls.thumb}
               className="object-cover rounded-sm"
             />
+            {selectedImageId === image.id && (
+              <div className="flex items-center justify-center absolute inset-y-0 h-full w-full bg-black/30">
+                <Check className="w-4 h-4 text-white" />
+              </div>
+            )}
+            <Link
+              href={image.links.html}
+              target="_blank"
+              className="absolute opacity-0 group-hover:opacity-100 bottom-0 w-full text-[10px] truncate text-white hover:underline p-1 bg-black/50"
+            >
+              {image.user.name}
+            </Link>
           </div>
         ))}
       </div>
