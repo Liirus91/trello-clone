@@ -14,6 +14,7 @@ import { useAction } from '@/hooks/use-action';
 import { createBoard } from '@/actions/create-board';
 import { toast } from 'sonner';
 import { FormPicker } from './form-picker';
+import { ElementRef, useRef } from 'react';
 
 interface FormPopoverProps {
   children: React.ReactNode;
@@ -28,13 +29,14 @@ export const FormPopover = ({
   align,
   sideOffset = 0,
 }: FormPopoverProps) => {
+  const closeRef = useRef<ElementRef<'button'>>(null);
+
   const { execute, fieldErrors } = useAction(createBoard, {
     onSuccess: (data) => {
-      console.log({ data });
       toast.success('Board created!');
+      closeRef.current?.click();
     },
     onError: (error) => {
-      console.log({ error });
       toast.error(error);
     },
   });
@@ -58,7 +60,7 @@ export const FormPopover = ({
         <div className="text-center text-sm font-medium pb-4 text-neutral-600">
           Create board
         </div>
-        <PopoverClose asChild>
+        <PopoverClose asChild ref={closeRef}>
           <Button
             variant="ghost"
             className="p-2 h-auto w-auto absolute top-2 right-2 text-neutral-600"
