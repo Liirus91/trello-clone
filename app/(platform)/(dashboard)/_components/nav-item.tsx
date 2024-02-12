@@ -106,7 +106,7 @@ export const NavItem = ({
 
 NavItem.Skeleton = function SkeletonNavItem() {
   return (
-    <div className="flex items-center gap-x-2">
+    <div className="flex items-center gap-x-2 p-1.5">
       <div className="w-10 h-10 relative shrink-0">
         <Skeleton className="h-full w-full absolute" />
       </div>
