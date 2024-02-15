@@ -9,7 +9,10 @@ interface BoardTitleFormProps {
 
 export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
   return (
-    <Button className="h-auto w-auto p-1 px-2 font-bold text-lg">
+    <Button
+      className="h-auto w-auto p-1 px-2 font-bold text-lg"
+      variant="transparent"
+    >
       {data.title}
     </Button>
   );
