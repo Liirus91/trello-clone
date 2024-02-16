@@ -32,6 +32,10 @@ export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
     console.log(title);
   };
 
+  const onBlur = () => {
+    formRef.current?.requestSubmit();
+  };
+
   if (isEditing) {
     return (
       <form
@@ -41,7 +45,7 @@ export const BoardTitleForm = ({ data }: BoardTitleFormProps) => {
       >
         <FormInput
           id="title"
-          onBlur={() => {}}
+          onBlur={onBlur}
           ref={inputRef}
           defaultValue={data.title}
           classname="bg-transparent h-7 py-1 px-[7px] font-bold text-lg focus-visible:outline-none focus-visible:ring-transparent border-none"
