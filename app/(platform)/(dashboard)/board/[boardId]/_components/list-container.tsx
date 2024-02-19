@@ -1,10 +1,10 @@
 'use client';
 
-import { List } from '@prisma/client';
+import { ListWithCards } from '@/types';
 
 interface ListContainerProps {
   boardId: string;
-  data: List[];
+  data: ListWithCards;
 }
 
 export const ListContainer = ({ boardId, data }: ListContainerProps) => {
