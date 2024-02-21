@@ -2,6 +2,8 @@
 
 import { ListWithCards } from '@/types';
 import { ListForm } from './list-form';
+import { useEffect, useState } from 'react';
+import { ListItem } from './list-item';
 
 interface ListContainerProps {
   boardId: string;
@@ -9,8 +11,17 @@ interface ListContainerProps {
 }
 
 export const ListContainer = ({ boardId, data }: ListContainerProps) => {
+  const [orderData, setOrderData] = useState(data);
+
+  useEffect(() => {
+    setOrderData(data);
+  }, [data]);
+
   return (
     <ol>
+      {orderData.map((list, index) => {
+        return <ListItem key={list.id} index={index} data={list} />;
+      })}
       <ListForm />
       <div className="flex-shrink-o w-0" />
     </ol>
