@@ -5,7 +5,7 @@ import { ListForm } from './list-form';
 
 interface ListContainerProps {
   boardId: string;
-  data: ListWithCards;
+  data: ListWithCards[];
 }
 
 export const ListContainer = ({ boardId, data }: ListContainerProps) => {
