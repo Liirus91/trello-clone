@@ -1,5 +1,6 @@
 'use client';
 
+import { FormSubmit } from '@/components/form/form-submit';
 import { Button } from '@/components/ui/button';
 import {
   Popover,
@@ -42,6 +43,16 @@ export const ListOptions = ({ data, onAddCard }: ListOptionsProps) => {
         >
           Add card...
         </Button>
+        <form>
+          <input hidden name="id" id="id" value={data.id} />
+          <input hidden name="boardId" id="boardId" value={data.boardId} />
+          <FormSubmit
+            variant="ghost"
+            className="h-auto w-auto rounded-none p-2 px-5 justify-start font-normal text-sm"
+          >
+            Copy list...
+          </FormSubmit>
+        </form>
       </PopoverContent>
     </Popover>
   );
