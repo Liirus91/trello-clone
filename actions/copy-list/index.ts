@@ -38,7 +38,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     list = await db.list.create({
       data: {
         boardId: listToCopy.boardId,
-        title: `${listToCopy.title}_Copy`,
+        title: `${listToCopy.title} - Copy`,
         order: newOrder,
         cards: {
           createMany: {
