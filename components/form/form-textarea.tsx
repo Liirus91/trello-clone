@@ -1,6 +1,7 @@
 'use client';
 
 import { KeyboardEventHandler, forwardRef } from 'react';
+import { Label } from '../ui/label';
 
 interface FormTextareaProps {
   id: string;
@@ -33,7 +34,20 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
     },
     ref
   ) => {
-    return <div>Form textarea</div>;
+    return (
+      <div className="w-full space-y-2">
+        <div className="w-full space-y-1">
+          {label ? (
+            <Label
+              htmlFor={id}
+              className="text-xs font-semibold text-neutral-700"
+            >
+              {label}
+            </Label>
+          ) : null}
+        </div>
+      </div>
+    );
   }
 );
 
