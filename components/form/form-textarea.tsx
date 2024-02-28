@@ -5,6 +5,7 @@ import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
 import { cn } from '@/lib/utils';
 import { FormErrors } from './form-errors';
+import { useFormStatus } from 'react-dom';
 
 interface FormTextareaProps {
   id: string;
@@ -37,6 +38,8 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
     },
     ref
   ) => {
+    const { pending } = useFormStatus();
+
     return (
       <div className="w-full space-y-2">
         <div className="w-full space-y-1">
@@ -57,7 +60,7 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
             onClick={onClick}
             required={required}
             placeholder={placeholder}
-            disabled={disabled}
+            disabled={pending || disabled}
             className={cn(
               'resize-none focus-visible:ring-0 focus-visible:ring-offset-0 ring-0 focus:ring-0 outline-none shadow-sm',
               className
