@@ -4,6 +4,7 @@ import { KeyboardEventHandler, forwardRef } from 'react';
 import { Label } from '../ui/label';
 import { Textarea } from '../ui/textarea';
 import { cn } from '@/lib/utils';
+import { FormErrors } from './form-errors';
 
 interface FormTextareaProps {
   id: string;
@@ -65,6 +66,7 @@ export const FormTextarea = forwardRef<HTMLTextAreaElement, FormTextareaProps>(
             defaultValue={defaultValue}
           />
         </div>
+        <FormErrors id={id} errors={errors} />
       </div>
     );
   }
