@@ -86,6 +86,21 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
 
         setOrderData(newOrderData);
       } else {
+        const [movedCard] = sourceList.cards.splice(source.index, 1);
+
+        movedCard.listId = destination.droppableId;
+
+        destList.cards.splice(destination.index, 0, movedCard);
+
+        sourceList.cards.forEach((card, index) => {
+          card.order === index;
+        });
+
+        destList.cards.forEach((card, index) => {
+          card.order === index;
+        });
+
+        setOrderData(newOrderData);
       }
     }
   };
