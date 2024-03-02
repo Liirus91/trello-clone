@@ -48,6 +48,46 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
       );
       setOrderData(items);
     }
+
+    if (type === 'card') {
+      let newOrderData = [...orderData];
+
+      const sourceList = newOrderData.find(
+        (list) => list.id === source.droppableId
+      );
+      const destList = newOrderData.find(
+        (list) => list.id === destination.droppableId
+      );
+
+      if (!sourceList || !destList) {
+        return;
+      }
+
+      if (!sourceList.cards) {
+        sourceList.cards = [];
+      }
+
+      if (!destList.cards) {
+        destList.cards = [];
+      }
+
+      if (source.droppableId === destination.droppableId) {
+        const reorderedCards = reorder(
+          sourceList.cards,
+          source.index,
+          destination.index
+        );
+
+        reorderedCards.forEach((card, index) => {
+          card.order === index;
+        });
+
+        sourceList.cards = reorderedCards;
+
+        setOrderData(newOrderData);
+      } else {
+      }
+    }
   };
 
   return (
