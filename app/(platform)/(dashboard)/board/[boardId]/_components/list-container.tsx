@@ -95,7 +95,7 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
         );
 
         reorderedCards.forEach((card, index) => {
-          card.order === index;
+          card.order = index;
         });
 
         sourceList.cards = reorderedCards;
