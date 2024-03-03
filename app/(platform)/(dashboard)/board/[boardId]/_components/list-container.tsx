@@ -8,6 +8,7 @@ import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import { useAction } from '@/hooks/use-action';
 import { updateListOrder } from '@/actions/update-list-order';
 import { toast } from 'sonner';
+import { updateCardOrder } from '@/actions/update-card-order';
 
 interface ListContainerProps {
   boardId: string;
@@ -27,6 +28,11 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
 
   const { execute: executeUpdateListOrder } = useAction(updateListOrder, {
     onSuccess: () => toast.success('List reorder'),
+    onError: (error) => toast.error(error),
+  });
+
+  const { execute: executeUpdateCardOrder } = useAction(updateCardOrder, {
+    onSuccess: () => toast.success('Card reorder'),
     onError: (error) => toast.error(error),
   });
 
@@ -95,6 +101,7 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
         sourceList.cards = reorderedCards;
 
         setOrderData(newOrderData);
+        executeUpdateCardOrder({ items: reorderedCards, boardId: boardId });
       } else {
         const [movedCard] = sourceList.cards.splice(source.index, 1);
 
