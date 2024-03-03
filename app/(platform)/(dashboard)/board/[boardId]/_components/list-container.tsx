@@ -24,7 +24,7 @@ function reorder<T>(list: T[], startIndex: number, endIndex: number) {
 }
 
 export const ListContainer = ({ boardId, data }: ListContainerProps) => {
-  const [orderData, setOrderData] = useState(data);
+  const [orderedData, setOrderedData] = useState(data);
 
   const { execute: executeUpdateListOrder } = useAction(updateListOrder, {
     onSuccess: () => toast.success('List reorder'),
@@ -37,7 +37,7 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
   });
 
   useEffect(() => {
-    setOrderData(data);
+    setOrderedData(data);
   }, [data]);
 
   const onDragEnd = (result: any) => {
@@ -57,16 +57,16 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
     }
 
     if (type === 'list') {
-      const items = reorder(orderData, source.index, destination.index).map(
+      const items = reorder(orderedData, source.index, destination.index).map(
         (item, index) => ({ ...item, order: index })
       );
 
-      setOrderData(items);
+      setOrderedData(items);
       executeUpdateListOrder({ items, boardId });
     }
 
     if (type === 'card') {
-      let newOrderData = [...orderData];
+      let newOrderData = [...orderedData];
 
       const sourceList = newOrderData.find(
         (list) => list.id === source.droppableId
@@ -100,7 +100,7 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
 
         sourceList.cards = reorderedCards;
 
-        setOrderData(newOrderData);
+        setOrderedData(newOrderData);
         executeUpdateCardOrder({ items: reorderedCards, boardId: boardId });
       } else {
         const [movedCard] = sourceList.cards.splice(source.index, 1);
@@ -117,7 +117,7 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
           card.order === index;
         });
 
-        setOrderData(newOrderData);
+        setOrderedData(newOrderData);
       }
     }
   };
@@ -131,7 +131,7 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
             ref={provided.innerRef}
             className="flex gap-x-3 h-full"
           >
-            {orderData.map((list, index) => {
+            {orderedData.map((list, index) => {
               return <ListItem key={list.id} index={index} data={list} />;
             })}
             {provided.placeholder}
