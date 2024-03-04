@@ -118,6 +118,7 @@ export const ListContainer = ({ boardId, data }: ListContainerProps) => {
         });
 
         setOrderedData(newOrderData);
+        executeUpdateCardOrder({ items: destList.cards, boardId: boardId });
       }
     }
   };
