@@ -51,6 +51,7 @@ export const Description = ({ data }: DescriptionProps) => {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['card', data.id] });
       toast.success(`Card "${data.title} updated"`);
+      disableEditing();
     },
     onError: (error) => toast.error(error),
   });
@@ -75,6 +76,7 @@ export const Description = ({ data }: DescriptionProps) => {
               defaultValue={data.description || undefined}
               placeholder="Add a more detailed description..."
               errors={fieldErrors}
+              ref={textareaRef}
             />
             <div className="flex items-center gap-x-2">
               <FormSubmit>Save</FormSubmit>
