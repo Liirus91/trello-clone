@@ -1,7 +1,9 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { CardWithList } from '@/types';
+import { Copy } from 'lucide-react';
 
 interface ActionsProps {
   data: CardWithList;
@@ -9,8 +11,12 @@ interface ActionsProps {
 
 export const Actions = ({ data }: ActionsProps) => {
   return (
-    <div>
-      <p>Actions</p>
+    <div className="space-y-2 mt-2">
+      <p className="text-xs font-semibold">Actions</p>
+      <Button>
+        <Copy className="w-4 h-4 mr-2" />
+        Copy
+      </Button>
     </div>
   );
 };
