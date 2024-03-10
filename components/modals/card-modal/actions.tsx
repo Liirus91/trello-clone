@@ -13,7 +13,7 @@ export const Actions = ({ data }: ActionsProps) => {
   return (
     <div className="space-y-2 mt-2">
       <p className="text-xs font-semibold">Actions</p>
-      <Button>
+      <Button variant="gray" className="w-full justify-start">
         <Copy className="w-4 h-4 mr-2" />
         Copy
       </Button>
