@@ -1,6 +1,7 @@
 import { ActivityItem } from '@/components/activity-item';
 import { Skeleton } from '@/components/ui/skeleton';
 import { db } from '@/lib/db';
+import { generateRandomNumber } from '@/lib/generateRandomNumber';
 import { auth } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 
@@ -28,11 +29,12 @@ export const ActivityList = async () => {
 ActivityList.Skeleton = function ActivityListSkeleton() {
   return (
     <ol>
-      <Skeleton className="w-[80%] h-14" />
-      <Skeleton className="w-[50%] h-14" />
-      <Skeleton className="w-[70%] h-14" />
-      <Skeleton className="w-[80%] h-14" />
-      <Skeleton className="w-[75%] h-14" />
+      {Array(...Array(5)).map((_, index) => (
+        <Skeleton
+          className={`w-[${generateRandomNumber(50, 5, 6)}%] h-14`}
+          key={index}
+        />
+      ))}
     </ol>
   );
 };
