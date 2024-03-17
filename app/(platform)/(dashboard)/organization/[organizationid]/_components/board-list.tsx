@@ -60,7 +60,7 @@ export const BoardList = async () => {
 BoardList.Skeleton = function SkeletonBoardList() {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-      {Array(...Array(8)).map((_, index) => (
+      {[...Array(8)].map((_, index) => (
         <Skeleton key={index} className="aspect-video h-full w-full p-2" />
       ))}
     </div>

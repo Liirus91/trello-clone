@@ -29,7 +29,7 @@ export const ActivityList = async () => {
 ActivityList.Skeleton = function ActivityListSkeleton() {
   return (
     <ol>
-      {Array(...Array(5)).map((_, index) => (
+      {[...Array(5)].map((_, index) => (
         <Skeleton
           className={`w-[${generateRandomNumber(50, 5, 6)}%] h-14`}
           key={index}

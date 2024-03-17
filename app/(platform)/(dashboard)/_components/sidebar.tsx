@@ -48,7 +48,7 @@ const Sidebar = ({ storageKey = 't-sidebar-state' }: SidebarProps) => {
           <Skeleton className="h-10 w-[50%]" />
           <Skeleton className="h-10 w-10" />
         </div>
-        {Array(...Array(4)).map((_, index) => (
+        {[...Array(4)].map((_, index) => (
           <NavItem.Skeleton key={index} />
         ))}
       </>
