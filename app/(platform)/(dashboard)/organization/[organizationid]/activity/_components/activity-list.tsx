@@ -12,7 +12,10 @@ export const ActivityList = async () => {
     redirect('/select-org');
   }
 
-  const auditLogs = await db.auditLog.findMany({ where: { orgId } });
+  const auditLogs = await db.auditLog.findMany({
+    where: { orgId },
+    orderBy: { createdAt: 'desc' },
+  });
 
   return (
     <ol className="space-y-4 mt-4">
